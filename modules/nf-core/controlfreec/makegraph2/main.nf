@@ -25,7 +25,7 @@ process CONTROLFREEC_MAKEGRAPH2 {
     def prefix = task.ext.prefix ?: "${meta.id}"
     def baf_cmd = baf ?: ""
     """
-    cat \$(which makeGraph2.0.R) | R --slave --args ${args} ${ratio} ${baf_cmd}
+    cat "${projectDir}/bin/makeGraph2.0.R" | R --slave --args ${args} ${ratio} ${baf_cmd}
 
     mv *_BAF.txt.png ${prefix}_BAF.png
     mv *_ratio.txt.log2.png ${prefix}_ratio.log2.png

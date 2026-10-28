@@ -119,7 +119,7 @@ workflow SAMPLESHEET_TO_CHANNEL {
         .map { _patient_sample, num_lanes, ch_items ->
             def (meta, fastq_1, fastq_2, spring_1, spring_2, table, cram, crai, bam, bai, contamination, vcf, variantcaller) = ch_items
 
-            if (contamination) {
+            if (contamination || contamination == 0) {
                 meta = meta + [ contamination: contamination]
             }
             if ((meta.lane || meta.lane == 0) && fastq_2) {
